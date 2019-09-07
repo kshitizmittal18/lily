@@ -1,0 +1,48 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+#Hide a Specific file
+<Files .env>
+order allow,deny
+ deny from all
+ </Files>
+ #Hide a Specific file
+<Files .editorconfig>
+order allow,deny
+ deny from all
+ </Files>
+ #Hide a Specific file
+<Files .env.example>
+order allow,deny
+ deny from all
+ </Files>
+ #Hide a Specific file
+<Files  web.config>
+order allow,deny
+ deny from all
+ </Files>
+#Hide a Specific file
+<Files composer.lock>
+order allow,deny
+ deny from all
+ </Files>
+
+
